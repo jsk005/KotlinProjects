@@ -1,0 +1,4 @@
+include ':activity'
+include ':navigation'
+include ':app'
+rootProject.name = "KEDU"
