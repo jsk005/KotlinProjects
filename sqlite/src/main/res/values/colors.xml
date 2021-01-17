@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#00BCD4</color>
+    <color name="purple_500">#03A9F4</color>
+    <color name="purple_700">#2196F3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="transparent">#00000000</color><!-- 투명 -->
+    <color name="colorBlack">#ff000000</color>
+    <color name="colorBlue">#0385ff</color>
+    <color name="colorWhite">#ffffffff</color>
+    <color name="colorGray">#ff8a8a8a</color>
+    <color name="colorDarkGray">#4c4c4e</color>
+    <color name="colorLightGray">#ffeaeaea</color>
+    <color name="colorMint">#ff00c0aa</color>
+    <color name="colorLightMint">#1000c0aa</color>
+    <color name="colorTitle">#de000000</color>
+    <color name="colorDetail">#8a000000</color>
+    <color name="colorRed">#ffD81B60</color>
+    <color name="colorLightRed">#ffff4444</color>
+    <color name="colorOrangeDark">#ffff8800</color>
+    <color name="colorYellow">#ffFFEC19</color>
+    <color name="colorYellowGreen">#9acd32</color>
+    <color name="colorSlateGray">#708090</color>
+    <color name="colorSkyBlue">#87ceeb</color>
+    <color name="colorWhiteGray">#f0f0f0</color>
+    <color name="colorIvory">#fffff0</color>
+    <color name="colorGreenYellow">#adff2f</color>
+    <color name="colorGreen">#00ff00</color>
+</resources>
