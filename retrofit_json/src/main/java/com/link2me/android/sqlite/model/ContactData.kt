@@ -3,7 +3,6 @@ package com.link2me.android.sqlite.model
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-// 수정사항 없음
 @Parcelize
 data class ContactData (
     // PersonData 정보를 담고 있는 객체 생성
