@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.link2me.android.activitychange.Changer.Companion.saveData
-import com.link2me.android.activitychange.task.Task1Activity
+import com.link2me.android.activitychange.task.Task1_Activity
 import com.link2me.android.common.BackPressHandler
 
 class MainActivity : AppCompatActivity() {
@@ -20,14 +20,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var backPressHandler: BackPressHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         // onCreate 메소드는 콜백 메소드로, C언어의 main()함수라고 생각하면 된다.
         // 콜백 메서드란, 내가 메서드를 실행하지 않아도 어떤 순간에 스스로 호출되는 메서드이다. 
-        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) // Layout을 화면에 표시해준다.
         // setContentView는 레이아웃 리소스를 인플레이팅하여 UI 레이아웃을 구성한다.
         // layout 폴더에 있는 activity_main.xml 파일을 찾는다.
         // 화면에 나타낼 View를 지정하고, XML Layout의 내용을 메모리상에 객체화한다.
-        Log.e(TAG, "onCreate()")
+        Log.d(TAG, "onCreate()")
         mContext = this@MainActivity
         backPressHandler = BackPressHandler(this)
         ClassName = this.localClassName
@@ -46,9 +46,11 @@ class MainActivity : AppCompatActivity() {
         btn2Target = findViewById(R.id.mainbutton)
         btn2Target.setOnClickListener({ view: View? ->
             val intent = Intent(this@MainActivity, TargetActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.putExtra("parcel", profile)
-            intent.putExtra("classname", ClassName)
+            intent.apply {
+                this.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                this.putExtra("parcel", profile)
+                this.putExtra("classname", ClassName)
+            }
             startActivity(intent)
         })
 
@@ -75,42 +77,43 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.btn_activity_task).setOnClickListener { v: View? ->
             // 안드로이드 생명주기에 대한 사항을 알아보기 위한 부분
-            val intent = Intent(mContext, Task1Activity::class.java)
-            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // 새로운 Task를 만들고 배치된다.
-            //intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            val intent = Intent(mContext, Task1_Activity::class.java)
+//            intent.apply {
+//                this.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) // 새로운 Task를 만들고 배치된다.
+//                this.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+//            }
             startActivity(intent)
-            finish()
         }
     }
 
     override fun onStart() {
         super.onStart()
-        Log.e(TAG, "onStart()")
+        Log.d(TAG, "onStart()")
     }
 
     override fun onRestart() {
         super.onRestart()
-        Log.e(TAG, "onRestart()")
+        Log.d(TAG, "onRestart()")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.e(TAG, "onPause()")
+        Log.d(TAG, "onPause()")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.e(TAG, "onResume()")
+        Log.d(TAG, "onResume()")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.e(TAG, "onStop()")
+        Log.d(TAG, "onStop()")
     }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        Log.e(TAG, "onNewIntent()")
+        Log.d(TAG, "onNewIntent()")
         if (null != intent) {
             val defaultValue = 0
             setIntent(intent)

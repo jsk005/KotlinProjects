@@ -18,6 +18,10 @@ class TargetActivity : AppCompatActivity(), ActivityChangListener {
     var textView: TextView? = null
     var button: Button? = null
 
+    companion object {
+        private var classToGoAfter: Class<*>? = null
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_target)
@@ -71,13 +75,14 @@ class TargetActivity : AppCompatActivity(), ActivityChangListener {
         finish()
     }
 
-    companion object {
-        private var classToGoAfter: Class<*>? = null
-    }
-
     override fun activityClass(activityClassToGo: Class<*>?) {
         Log.e(TAG, "activityClass :$activityClassToGo")
         // 인터페이스 구현
         classToGoAfter = activityClassToGo
     }
+
+    override fun onBackPressed() {
+        finish()
+    }
+
 }

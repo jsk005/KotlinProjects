@@ -13,6 +13,7 @@ class Changer {
                 activityChangListener = TargetActivity() // 구현 객체 생성
             }
         }
+
         fun saveData(context: Context, activityClassToGo: Class<*>?) {
             init(context)
             activityChangListener!!.activityClass(activityClassToGo)

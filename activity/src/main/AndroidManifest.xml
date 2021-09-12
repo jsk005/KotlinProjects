@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".task.Task3Activity" />
         <activity android:name=".task.Task2Activity" />
-        <activity android:name=".task.Task1Activity"/>
+        <activity android:name=".task.Task1_Activity"/>
         <activity android:name=".SubMainActivity" />
         <activity
             android:name=".SplashActivity"
@@ -34,6 +34,7 @@
         <activity
             android:name=".TargetActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
