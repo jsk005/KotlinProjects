@@ -1,17 +1,29 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/green_200</item> <!-- 버튼 배경색상 --> <!-- dark mode Toolbar 상단 배경색상은 black 이 기본  -->
+        <item name="android:textColorPrimary">@color/white</item> <!-- 툴바 홈버튼(뒤로가기) 색상 -->
+        <item name="colorPrimaryVariant">@color/blue_200</item> <!-- 스먀트폰 최상단 색상 -->
+        <item name="colorOnPrimary">@color/white</item> <!-- 글자색상 -->
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">#ffccc2dc</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="backgroundColor">@color/black</item> <!-- CordinatorLayout 배경색상 -->
+        <item name="android:windowBackground">@color/black</item> <!-- window 배경색상, 별도 지정하지 않으면 black(dark mode) -->
+    </style>
+
+    <style name="AppTheme.AppBarOverlay"  parent="ThemeOverlay.MaterialComponents.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Dark"  />
+
+    <style name="AppTheme.ErrorAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorRed</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -19,15 +31,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="ErrorAppearance" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/colorRed</item>
-        <item name="android:textSize">14sp</item>
+    <style name="AppTheme.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
     </style>
-
-    <style name="AppTheme.Light.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar" />
 
 </resources>

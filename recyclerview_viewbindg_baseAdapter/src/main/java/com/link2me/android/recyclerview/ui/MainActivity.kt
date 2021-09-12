@@ -1,7 +1,9 @@
-package com.link2me.android.recyclerview
+package com.link2me.android.recyclerview.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Parcelable
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.link2me.android.common.BackPressHandler
 import com.link2me.android.common.HangulUtils
 import com.link2me.android.common.Utils
+import com.link2me.android.recyclerview.adapter.ContactsAdapter
 import com.link2me.android.recyclerview.databinding.ActivityMainBinding
 import com.link2me.android.recyclerview.localdb.ContactDbFacade
 import com.link2me.android.recyclerview.model.ContactData
@@ -24,6 +27,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private val TAG = this.javaClass.simpleName
+
     lateinit var mContext: Context
     private lateinit var binding: ActivityMainBinding
 //    lateinit var editsearch: SearchView
@@ -45,10 +49,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         //setContentView(R.layout.activity_main)
         mContext = this@MainActivity
+
+        Log.e(TAG, "onCreate")
+
         backPressHandler = BackPressHandler(this) // 뒤로 가기 버튼 이벤트
         mFacade = ContactDbFacade(mContext)
 
         initView()
+        getServerData() // 서버 데이터 가져오기
     }
 
     private fun getServerData() {
@@ -74,8 +82,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        getServerData() // 서버 데이터 가져오기
-
         // Adapter에 추가 데이터를 저장하기 위한 ArrayList
         //mRecyclerView = findViewById(R.id.my_recyclerView)
         mAdapter = ContactsAdapter(mContext) // Adapter 생성
@@ -132,7 +138,27 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        mAdapter.notifyDataSetChanged()  // 이거 없으면 어플 비정상 종료처리됨
+        mAdapter.notifyDataSetChanged()  // 이거 없애면 어플 비정상 종료 처리됨
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.e(TAG, "onRestart")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.e(TAG, "onStart")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.e(TAG, "onPause")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e(TAG, "onResume")
     }
 
     override fun onBackPressed() {

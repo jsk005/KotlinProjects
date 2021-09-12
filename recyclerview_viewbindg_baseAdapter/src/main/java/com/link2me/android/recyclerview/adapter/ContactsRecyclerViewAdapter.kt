@@ -1,4 +1,4 @@
-package com.link2me.android.recyclerview
+package com.link2me.android.recyclerview.adapter
 
 import android.content.Context
 import android.content.DialogInterface
@@ -14,15 +14,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.link2me.android.recyclerview.R
 import com.link2me.android.recyclerview.model.ContactData
 import com.link2me.android.recyclerview.utils.Value
 
-class ContactsListAdapter(val context: Context, val itemList: List<ContactData>) : RecyclerView.Adapter<ContactsListAdapter.ContactsViewHolder>() {
+class ContactsRecyclerViewAdapter(val context: Context, val itemList: List<ContactData>) : RecyclerView.Adapter<ContactsRecyclerViewAdapter.ContactsViewHolder>() {
     private val TAG = this.javaClass.simpleName
 
     // 이 Adapter는 사용하지 않지만 비교하는데 필요할 수도 있어서 그냥 남겨준다.
 
-    // itemClockListener 를 위한 인터페이스 정의
+    // itemClickListener 를 위한 인터페이스 정의
     interface OnItemClickListener {
         fun onClick(v: View, position: Int)
     }

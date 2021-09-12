@@ -1,4 +1,4 @@
-package com.link2me.android.recyclerview
+package com.link2me.android.recyclerview.adapter
 
 import android.content.Context
 import android.content.DialogInterface
@@ -8,12 +8,16 @@ import android.telephony.PhoneNumberUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.link2me.android.recyclerview.R
 import com.link2me.android.recyclerview.databinding.ItemAddressBinding
 import com.link2me.android.recyclerview.model.ContactData
 import com.link2me.android.recyclerview.utils.Value
@@ -32,16 +36,21 @@ class ContactsAdapter(val context: Context) : ListAdapter<ContactData, ContactsA
     }
     //////////////////////////////////////////////////////////////////
 
-    inner class ViewHolder(private val binding: ItemAddressBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view){
         // View와 데이터를 연결시키는 함수
         fun bind(item: ContactData){
+            val profileImage = view.findViewById<ImageView>(R.id.profile_Image)
+            val itemName = view.findViewById<TextView>(R.id.item_name)
+            val itemMobileNO = view.findViewById<TextView>(R.id.item_mobileNO)
+            val itemBtn = view.findViewById<ImageView>(R.id.item_Btn)
+
             if (item.photo.contains("jpg")){
                 val photoURL = Value.Photo_URL + item.photo
-                Glide.with(context).load(photoURL).into(binding.profileImage)
+                Glide.with(context).load(photoURL).into(profileImage)
             }
 
-            binding.itemName.text = item.userNM
-            binding.itemMobileNO.text = item.mobileNO
+            itemName.text = item.userNM
+            itemMobileNO.text = item.mobileNO
 
             val items = arrayOf("휴대폰 전화걸기", "연락처 저장")
             val builder = AlertDialog.Builder(context)
@@ -72,12 +81,14 @@ class ContactsAdapter(val context: Context) : ListAdapter<ContactData, ContactsA
                 }
             })
             builder.create()
-            binding.itemBtn.setOnClickListener { builder.show() }
+            itemBtn.setOnClickListener { builder.show() }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemAddressBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        // View Binding 으로 하면 달라지는 부분 중 하나
+        val rootView = LayoutInflater.from(parent.context).inflate(R.layout.item_address, parent,false)
+        return ViewHolder(rootView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

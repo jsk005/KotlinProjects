@@ -1,4 +1,4 @@
-package com.link2me.android.recyclerview
+package com.link2me.android.recyclerview.ui
 
 import android.Manifest
 import android.content.Context
@@ -14,6 +14,7 @@ import android.util.Log
 import android.widget.Toast
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
+import com.link2me.android.recyclerview.R
 import java.util.*
 
 class SplashActivity : AppCompatActivity() {
